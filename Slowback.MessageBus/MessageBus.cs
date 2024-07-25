@@ -30,8 +30,8 @@ namespace Slowback.MessageBus
 
             if (!_subscribers.ContainsKey(message))
                 _subscribers.Add(message, new List<MessageBusAction> { function });
-
-            _subscribers[message].Add(function);
+            else
+                _subscribers[message].Add(function);
 
             return () => { _subscribers[message] = _subscribers[message].Where(f => f.Id != function.Id).ToList(); };
         }
