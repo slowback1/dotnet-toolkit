@@ -12,6 +12,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Logger", "Slowback
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Logger.Tests", "Slowback.Logger.Tests\Slowback.Logger.Tests.csproj", "{21FB07D0-A841-48B8-B6CC-71664F5E889F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Time.Tests", "Slowback.Time.Tests\Slowback.Time.Tests.csproj", "{C6C7CB8C-F646-43C2-BEDE-6A7FF756E19F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Time", "Slowback.Time\Slowback.Time.csproj", "{F05B1B4F-1404-4242-9D42-7064B2B6AE3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.TestUtilities", "Slowback.TestUtilities\Slowback.TestUtilities.csproj", "{CA020296-57E2-45F6-86FE-4CDA36FE76B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +56,18 @@ Global
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C7CB8C-F646-43C2-BEDE-6A7FF756E19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C7CB8C-F646-43C2-BEDE-6A7FF756E19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C7CB8C-F646-43C2-BEDE-6A7FF756E19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C7CB8C-F646-43C2-BEDE-6A7FF756E19F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05B1B4F-1404-4242-9D42-7064B2B6AE3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05B1B4F-1404-4242-9D42-7064B2B6AE3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05B1B4F-1404-4242-9D42-7064B2B6AE3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05B1B4F-1404-4242-9D42-7064B2B6AE3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA020296-57E2-45F6-86FE-4CDA36FE76B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA020296-57E2-45F6-86FE-4CDA36FE76B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA020296-57E2-45F6-86FE-4CDA36FE76B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA020296-57E2-45F6-86FE-4CDA36FE76B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
