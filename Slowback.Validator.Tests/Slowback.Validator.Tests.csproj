@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Validator\Validator.csproj"/>
+        <ProjectReference Include="..\Slowback.Validator\Slowback.Validator.csproj" />
     </ItemGroup>
 
 </Project>

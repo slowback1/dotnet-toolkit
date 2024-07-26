@@ -1,6 +1,6 @@
-﻿using Validator.Attributes;
+﻿using Slowback.Validator.Attributes;
 
-namespace Validator.Tests;
+namespace Slowback.Validator.Tests;
 
 public class TestObject
 {

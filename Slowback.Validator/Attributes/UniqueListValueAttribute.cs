@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Validator.Attributes;
+namespace Slowback.Validator.Attributes;
 
 public class UniqueListValueAttribute : ValidationAttribute
 {

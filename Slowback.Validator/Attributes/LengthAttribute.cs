@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Text;
 
-namespace Validator.Attributes;
+namespace Slowback.Validator.Attributes;
 
 public class LengthAttribute : ValidationAttribute
 {

@@ -4,9 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.MessageBus", "Slow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.MessageBus.Tests", "Slowback.MessageBus.Tests\Slowback.MessageBus.Tests.csproj", "{9DDF8FBD-DD5D-4894-9CB2-80A145B10606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{E338D056-B7AE-42C6-A670-F66E4652F6D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Validator", "Slowback.Validator\Slowback.Validator.csproj", "{E338D056-B7AE-42C6-A670-F66E4652F6D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator.Tests", "Validator.Tests\Validator.Tests.csproj", "{EC02691D-4781-4223-91B3-C03BA127FF1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Validator.Tests", "Slowback.Validator.Tests\Slowback.Validator.Tests.csproj", "{EC02691D-4781-4223-91B3-C03BA127FF1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

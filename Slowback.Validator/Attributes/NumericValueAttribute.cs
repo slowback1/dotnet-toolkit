@@ -1,4 +1,4 @@
-﻿namespace Validator.Attributes;
+﻿namespace Slowback.Validator.Attributes;
 
 public class NumericValueAttribute : ValidationAttribute
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using Validator.Attributes;
+using Slowback.Validator.Attributes;
 
-namespace Validator;
+namespace Slowback.Validator;
 
 public static class ObjectValidator
 {

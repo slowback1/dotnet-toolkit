@@ -1,6 +1,6 @@
-﻿using Validator.Attributes;
+﻿using Slowback.Validator.Attributes;
 
-namespace Validator.Tests.Attributes;
+namespace Slowback.Validator.Tests.Attributes;
 
 public class LengthAttributeTests
 {
