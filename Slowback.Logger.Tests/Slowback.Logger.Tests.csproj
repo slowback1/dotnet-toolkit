@@ -24,6 +24,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Slowback.Logger\Slowback.Logger.csproj"/>
         <ProjectReference Include="..\Slowback.MessageBus\Slowback.MessageBus.csproj"/>
+        <ProjectReference Include="..\Slowback.TestUtilities\Slowback.TestUtilities.csproj"/>
     </ItemGroup>
 
 </Project>

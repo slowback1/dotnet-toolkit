@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Slowback.MessageBus\Slowback.MessageBus.csproj"/>
+        <ProjectReference Include="..\Slowback.Time\Slowback.Time.csproj"/>
     </ItemGroup>
 
 </Project>
