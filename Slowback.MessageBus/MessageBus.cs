@@ -13,6 +13,8 @@ namespace Slowback.MessageBus
         private readonly Dictionary<string, List<MessageBusAction>> _subscribers =
             new Dictionary<string, List<MessageBusAction>>();
 
+        private List<MessageBusAction> _allMessageSubscribers = new List<MessageBusAction>();
+
         private MessageBus()
         {
         }
@@ -36,6 +38,14 @@ namespace Slowback.MessageBus
             return () => { _subscribers[message] = _subscribers[message].Where(f => f.Id != function.Id).ToList(); };
         }
 
+        public Action SubscribeToAllMessages<T>(Action<T> action)
+        {
+            var function = ConvertToFunction(action);
+            _allMessageSubscribers.Add(function);
+
+            return () => { _allMessageSubscribers = _allMessageSubscribers.Where(f => f.Id != function.Id).ToList(); };
+        }
+
         private MessageBusAction ConvertToFunction<T>(Action<T> action)
         {
             Func<object, Task> messageAction = o =>
@@ -54,9 +64,24 @@ namespace Slowback.MessageBus
         public void Publish<T>(string message, T payload)
         {
             AddToDictionary(message, payload);
+
+            foreach (var action in _allMessageSubscribers) TryPublishMessage(action.Action, payload);
+
             if (!_subscribers.TryGetValue(message, out var actions)) return;
 
             foreach (var action in actions) action.Action(payload);
+        }
+
+        private void TryPublishMessage<T>(Func<object, Task> action, T payload)
+        {
+            try
+            {
+                action(payload);
+            }
+            catch
+            {
+                action(null);
+            }
         }
 
         private void AddToDictionary<T>(string message, T payload)
@@ -70,6 +95,8 @@ namespace Slowback.MessageBus
         public async Task PublishAsync<T>(string message, T payload)
         {
             AddToDictionary(message, payload);
+            foreach (var action in _allMessageSubscribers) TryPublishMessage(action.Action, payload);
+
             if (!_subscribers.TryGetValue(message, out var actions)) return;
 
             foreach (var action in actions) await Task.Run(() => action.Action(payload));
@@ -83,6 +110,7 @@ namespace Slowback.MessageBus
         public void ClearSubscribers()
         {
             _subscribers.Clear();
+            _allMessageSubscribers.Clear();
         }
 
         public void ClearMessages()

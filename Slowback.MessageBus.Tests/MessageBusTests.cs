@@ -209,4 +209,78 @@ public class MessageBusTests
 
         Assert.That(messageBus.GetLastMessage<string>(message), Is.Null);
     }
+
+    [Test]
+    public void CanSubscribeToAllMessagesAtTheSameTime()
+    {
+        var messageBus = MessageBus.GetInstance();
+        var message1 = "test1";
+        var message2 = "test2";
+        var receivedMessage1 = "";
+        var receivedMessage2 = "";
+
+        messageBus.SubscribeToAllMessages<string>(m => { receivedMessage1 = m; });
+        messageBus.SubscribeToAllMessages<string>(m => { receivedMessage2 = m; });
+
+        messageBus.Publish(message1, message1);
+        messageBus.Publish(message2, message2);
+
+        Assert.That(receivedMessage1, Is.SameAs(message2));
+        Assert.That(receivedMessage2, Is.SameAs(message2));
+    }
+
+    [Test]
+    public void CanUnsubscribeFromAllMessages()
+    {
+        var messageBus = MessageBus.GetInstance();
+        var message1 = "test1";
+        var message2 = "test2";
+        var receivedMessage1 = "";
+        var receivedMessage2 = "";
+
+        var unsubscribe1 = messageBus.SubscribeToAllMessages<string>(m => { receivedMessage1 = m; });
+        var unsubscribe2 = messageBus.SubscribeToAllMessages<string>(m => { receivedMessage2 = m; });
+
+        unsubscribe1();
+
+        messageBus.Publish(message1, message1);
+        messageBus.Publish(message2, message2);
+
+        Assert.That(receivedMessage1, Is.Empty);
+        Assert.That(receivedMessage2, Is.SameAs(message2));
+    }
+
+    [Test]
+    public void DoesNotExplodeWhenSubscribingToAllMessagesAndReceivesAComplexTypeThatItIsNotExpecting()
+    {
+        var messageBus = MessageBus.GetInstance();
+        var message = new TestMessage { Message = "complex", Value = 42 };
+        string receivedMessage = null;
+
+        messageBus.SubscribeToAllMessages<string>(m => { receivedMessage = "got it"; });
+
+        messageBus.Publish(message.Message, message);
+
+        Assert.That(receivedMessage, Is.EqualTo("got it"));
+    }
+
+    [Test]
+    public async Task CanHandleAnAsyncActionForAllMessages()
+    {
+        var messageBus = MessageBus.GetInstance();
+        var message = "test";
+        var receivedMessage = "";
+
+        messageBus.SubscribeToAllMessages<string>(async m =>
+        {
+            await Task.Delay(100);
+            receivedMessage = m;
+        });
+
+        await messageBus.PublishAsync(message, message);
+
+        await Task.Delay(200);
+
+        Assert.That(receivedMessage, Is.SameAs(message));
+    }
 }
