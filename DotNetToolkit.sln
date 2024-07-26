@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Validator", "Slowb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Validator.Tests", "Slowback.Validator.Tests\Slowback.Validator.Tests.csproj", "{EC02691D-4781-4223-91B3-C03BA127FF1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Logger", "Slowback.Logger\Slowback.Logger.csproj", "{062AC096-87D5-4256-B921-EDF3DE53639F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Logger.Tests", "Slowback.Logger.Tests\Slowback.Logger.Tests.csproj", "{21FB07D0-A841-48B8-B6CC-71664F5E889F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{EC02691D-4781-4223-91B3-C03BA127FF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC02691D-4781-4223-91B3-C03BA127FF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC02691D-4781-4223-91B3-C03BA127FF1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{062AC096-87D5-4256-B921-EDF3DE53639F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062AC096-87D5-4256-B921-EDF3DE53639F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062AC096-87D5-4256-B921-EDF3DE53639F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062AC096-87D5-4256-B921-EDF3DE53639F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21FB07D0-A841-48B8-B6CC-71664F5E889F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
