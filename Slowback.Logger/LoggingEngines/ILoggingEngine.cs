@@ -1,4 +1,4 @@
-﻿namespace Slowback.Logger;
+﻿namespace Slowback.Logger.LoggingEngines;
 
 public interface ILoggingEngine
 {

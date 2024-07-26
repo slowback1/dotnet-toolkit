@@ -1,4 +1,6 @@
-﻿namespace Slowback.Logger.Tests;
+﻿using Slowback.Logger.LoggingEngines;
+
+namespace Slowback.Logger.Tests;
 
 public class TestLoggingEngine : ILoggingEngine
 {

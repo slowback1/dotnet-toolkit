@@ -1,4 +1,6 @@
-﻿namespace Slowback.Logger;
+﻿using Slowback.Logger.LoggingEngines;
+
+namespace Slowback.Logger;
 
 public class Logger
 {
