@@ -74,10 +74,7 @@ namespace Slowback.Messaging
 
         private static void AddToDictionary<T>(string message, T payload)
         {
-            if (_lastMessages.ContainsKey(message))
-                _lastMessages[message] = payload;
-            else
-                _lastMessages.Add(message, payload);
+            _lastMessages[message] = payload;
         }
 
         public static async Task PublishAsync<T>(string message, T payload)
