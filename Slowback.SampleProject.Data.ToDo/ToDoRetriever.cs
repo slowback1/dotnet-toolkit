@@ -21,7 +21,9 @@ public class ToDoRetriever : BaseDatabaseAction
         {
             Id = toDo.ToDoId,
             Description = toDo.Description,
-            IsComplete = toDo.IsComplete
+            IsComplete = toDo.IsComplete,
+            CreatedAt = toDo.CreatedAt,
+            CompletedAt = toDo.CompletedAt
         };
     }
 

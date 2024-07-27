@@ -6,12 +6,12 @@ public abstract class BaseDatabaseAction
 {
     protected readonly SampleAppContext _context;
 
-    public BaseDatabaseAction(ConnectionOptions options)
+    protected BaseDatabaseAction(ConnectionOptions options)
     {
         _context = new SampleAppContext(options);
     }
 
-    public BaseDatabaseAction(SampleAppContext context)
+    protected BaseDatabaseAction(SampleAppContext context)
     {
         _context = context;
     }

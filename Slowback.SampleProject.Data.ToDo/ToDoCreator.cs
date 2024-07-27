@@ -3,6 +3,7 @@ using Slowback.Common.Dtos;
 using Slowback.Data.Core.EF;
 using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
+using Slowback.Time;
 
 namespace Slowback.SampleProject.Data.ToDo;
 
@@ -21,7 +22,8 @@ public class ToDoCreator : BaseDatabaseAction
         var toDo = new Core.Models.ToDo
         {
             Description = dto.Description,
-            IsComplete = false
+            IsComplete = false,
+            CreatedAt = TimeEnvironment.Provider.Today()
         };
 
         await _context.ToDos.AddAsync(toDo);

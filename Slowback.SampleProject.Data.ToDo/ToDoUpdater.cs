@@ -3,6 +3,7 @@ using Slowback.Common.Dtos;
 using Slowback.Data.Core.EF;
 using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
+using Slowback.Time;
 
 namespace Slowback.SampleProject.Data.ToDo;
 
@@ -24,6 +25,9 @@ public class ToDoUpdater : BaseDatabaseAction
 
         toDo.Description = dto.Description;
         toDo.IsComplete = dto.IsComplete;
+
+        if (toDo.IsComplete)
+            toDo.CompletedAt = TimeEnvironment.Provider.Today();
 
         await _context.SaveChangesAsync();
 
