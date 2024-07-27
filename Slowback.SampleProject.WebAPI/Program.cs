@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using Slowback.SampleProject.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +11,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+JsonConvert.DefaultSettings = () =>
+{
+    var settings = new JsonSerializerSettings();
+
+    settings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
+
+    return settings;
+};
 
 var app = builder.Build();
 

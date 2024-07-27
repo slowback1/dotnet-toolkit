@@ -1,6 +1,8 @@
-﻿namespace Slowback.Common.Dtos;
+﻿using Slowback.Validator.Attributes;
+
+namespace Slowback.Common.Dtos;
 
 public class CreateToDo
 {
-    public string Description { get; set; }
+    [Required] public string Description { get; set; }
 }
