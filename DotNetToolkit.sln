@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.MessageBus", "Slowback.MessageBus\Slowback.MessageBus.csproj", "{E94FCDA9-BD96-4B7A-8511-8BEF7D40DD94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Messaging", "Slowback.Messaging\Slowback.Messaging.csproj", "{E94FCDA9-BD96-4B7A-8511-8BEF7D40DD94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.MessageBus.Tests", "Slowback.MessageBus.Tests\Slowback.MessageBus.Tests.csproj", "{9DDF8FBD-DD5D-4894-9CB2-80A145B10606}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Messaging.Tests", "Slowback.Messaging.Tests\Slowback.Messaging.Tests.csproj", "{9DDF8FBD-DD5D-4894-9CB2-80A145B10606}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Validator", "Slowback.Validator\Slowback.Validator.csproj", "{E338D056-B7AE-42C6-A670-F66E4652F6D8}"
 EndProject

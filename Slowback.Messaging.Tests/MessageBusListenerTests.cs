@@ -1,12 +1,12 @@
-﻿namespace Slowback.MessageBus.Tests;
+﻿namespace Slowback.Messaging.Tests;
 
 public class MessageBusListenerTests
 {
     [OneTimeTearDown]
     public void TearDown()
     {
-        MessageBus.GetInstance().ClearSubscribers();
-        MessageBus.GetInstance().ClearMessages();
+        MessageBus.ClearSubscribers();
+        MessageBus.ClearMessages();
     }
 
     [Test]
@@ -26,7 +26,7 @@ public class MessageBusListenerTests
         var listener = new TestMessageBusListener();
         var message = "test_message";
 
-        MessageBus.GetInstance().Publish("test_listener", message);
+        await MessageBus.PublishAsync("test_listener", message);
 
         Assert.That(listener.LastMessage, Is.EqualTo(message));
     }
@@ -39,7 +39,7 @@ public class MessageBusListenerTests
         var message = 69;
 
 
-        await MessageBus.GetInstance().PublishAsync("static_listener_test", message);
+        await MessageBus.PublishAsync("static_listener_test", message);
 
         Assert.That(TestStaticMessageBusListener.Instance.LastMessage, Is.EqualTo(message));
     }

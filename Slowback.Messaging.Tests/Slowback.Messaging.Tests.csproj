@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Slowback.MessageBus\Slowback.MessageBus.csproj" />
+        <ProjectReference Include="..\Slowback.Messaging\Slowback.Messaging.csproj"/>
     </ItemGroup>
 
 </Project>

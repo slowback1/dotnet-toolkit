@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Slowback.Common;
+using Slowback.Messaging;
 
 namespace Slowback.WebAPI.Controllers;
 
@@ -10,7 +11,7 @@ public class ToDoController : BaseController
     [Route("")]
     public string Get()
     {
-        MessageBus.MessageBus.GetInstance().Publish(Messages.LogMessage, "Hello World!");
+        MessageBus.Publish(Messages.LogMessage, "Hello World!");
 
         return "Hello World!";
     }

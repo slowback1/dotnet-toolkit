@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Slowback.MessageBus
+namespace Slowback.Messaging
 {
     internal class MessageBusAction
     {

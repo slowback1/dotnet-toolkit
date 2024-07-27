@@ -1,4 +1,4 @@
-﻿namespace Slowback.MessageBus.Tests;
+﻿namespace Slowback.Messaging.Tests;
 
 public class TestMessageBusListener : MessageBusListener<string>
 {

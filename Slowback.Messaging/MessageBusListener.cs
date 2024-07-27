@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Slowback.MessageBus
+namespace Slowback.Messaging
 {
     public abstract class MessageBusListener<T>
     {
@@ -14,7 +14,7 @@ namespace Slowback.MessageBus
 
         private void ListenForMessages()
         {
-            MessageBus.GetInstance().Subscribe<T>(_topic, message => OnMessage(message));
+            MessageBus.Subscribe<T>(_topic, message => OnMessage(message));
         }
 
         public abstract Task OnMessage(T message);

@@ -3,30 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Slowback.MessageBus
+namespace Slowback.Messaging
 {
-    public class MessageBus
+    public static class MessageBus
     {
-        private static MessageBus? _instance;
-        private readonly Dictionary<string, object> _lastMessages = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> _lastMessages = new Dictionary<string, object>();
 
-        private readonly Dictionary<string, List<MessageBusAction>> _subscribers =
+        private static readonly Dictionary<string, List<MessageBusAction>> _subscribers =
             new Dictionary<string, List<MessageBusAction>>();
 
-        private List<MessageBusAction> _allMessageSubscribers = new List<MessageBusAction>();
+        private static List<MessageBusAction> _allMessageSubscribers = new List<MessageBusAction>();
 
-        private MessageBus()
-        {
-        }
-
-        public static MessageBus GetInstance()
-        {
-            if (_instance == null) _instance = new MessageBus();
-
-            return _instance;
-        }
-
-        public Action Subscribe<T>(string message, Action<T> action)
+        public static Action Subscribe<T>(string message, Action<T> action)
         {
             var function = ConvertToFunction(action);
 
@@ -38,7 +26,7 @@ namespace Slowback.MessageBus
             return () => { _subscribers[message] = _subscribers[message].Where(f => f.Id != function.Id).ToList(); };
         }
 
-        public Action SubscribeToAllMessages<T>(Action<T> action)
+        public static Action SubscribeToAllMessages<T>(Action<T> action)
         {
             var function = ConvertToFunction(action);
             _allMessageSubscribers.Add(function);
@@ -46,7 +34,7 @@ namespace Slowback.MessageBus
             return () => { _allMessageSubscribers = _allMessageSubscribers.Where(f => f.Id != function.Id).ToList(); };
         }
 
-        private MessageBusAction ConvertToFunction<T>(Action<T> action)
+        private static MessageBusAction ConvertToFunction<T>(Action<T> action)
         {
             Func<object, Task> messageAction = o =>
             {
@@ -61,7 +49,7 @@ namespace Slowback.MessageBus
             };
         }
 
-        public void Publish<T>(string message, T payload)
+        public static void Publish<T>(string message, T payload)
         {
             AddToDictionary(message, payload);
 
@@ -72,7 +60,7 @@ namespace Slowback.MessageBus
             foreach (var action in actions) action.Action(payload);
         }
 
-        private void TryPublishMessage<T>(Func<object, Task> action, T payload)
+        private static void TryPublishMessage<T>(Func<object, Task> action, T payload)
         {
             try
             {
@@ -84,7 +72,7 @@ namespace Slowback.MessageBus
             }
         }
 
-        private void AddToDictionary<T>(string message, T payload)
+        private static void AddToDictionary<T>(string message, T payload)
         {
             if (_lastMessages.ContainsKey(message))
                 _lastMessages[message] = payload;
@@ -92,7 +80,7 @@ namespace Slowback.MessageBus
                 _lastMessages.Add(message, payload);
         }
 
-        public async Task PublishAsync<T>(string message, T payload)
+        public static async Task PublishAsync<T>(string message, T payload)
         {
             AddToDictionary(message, payload);
             foreach (var action in _allMessageSubscribers) TryPublishMessage(action.Action, payload);
@@ -102,18 +90,18 @@ namespace Slowback.MessageBus
             foreach (var action in actions) await Task.Run(() => action.Action(payload));
         }
 
-        public T GetLastMessage<T>(string message)
+        public static T GetLastMessage<T>(string message)
         {
             return _lastMessages.ContainsKey(message) ? (T)_lastMessages[message] : default;
         }
 
-        public void ClearSubscribers()
+        public static void ClearSubscribers()
         {
             _subscribers.Clear();
             _allMessageSubscribers.Clear();
         }
 
-        public void ClearMessages()
+        public static void ClearMessages()
         {
             _lastMessages.Clear();
         }

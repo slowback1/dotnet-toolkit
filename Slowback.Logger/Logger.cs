@@ -1,4 +1,5 @@
 ﻿using Slowback.Logger.LoggingEngines;
+using Slowback.Messaging;
 
 namespace Slowback.Logger;
 
@@ -41,7 +42,7 @@ public class Logger
 
     private void ListenForILoggableMessages()
     {
-        UnsubscribeFromAllMessages = MessageBus.MessageBus.GetInstance().SubscribeToAllMessages<ILoggable?>(message =>
+        UnsubscribeFromAllMessages = MessageBus.SubscribeToAllMessages<ILoggable?>(message =>
         {
             if (message is null) return;
 
@@ -51,7 +52,7 @@ public class Logger
 
     private void ListenForStringMessages()
     {
-        UnsubscribeFromDefaultLoggingMessage = MessageBus.MessageBus.GetInstance().Subscribe<string?>(
+        UnsubscribeFromDefaultLoggingMessage = MessageBus.Subscribe<string?>(
             _loggingMessage, message =>
             {
                 if (message is null) return;
