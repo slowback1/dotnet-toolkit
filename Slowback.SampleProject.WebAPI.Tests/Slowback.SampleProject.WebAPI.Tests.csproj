@@ -23,7 +23,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Slowback.TestUtilities\Slowback.TestUtilities.csproj"/>
-        <ProjectReference Include="..\Slowback.WebAPI\Slowback.WebAPI.csproj"/>
+        <ProjectReference Include="..\Slowback.SampleProject.WebAPI\Slowback.SampleProject.WebAPI.csproj"/>
     </ItemGroup>
 
 </Project>

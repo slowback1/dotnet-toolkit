@@ -1,4 +1,4 @@
-namespace Slowback.WebAPI.Tests;
+namespace Slowback.SampleProject.WebAPI.Tests;
 
 public class Tests
 {

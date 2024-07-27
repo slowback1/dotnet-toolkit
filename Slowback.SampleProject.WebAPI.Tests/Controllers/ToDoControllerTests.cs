@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Slowback.SampleProject.WebAPI.Controllers;
 using Slowback.TestUtilities;
-using Slowback.WebAPI.Controllers;
 
-namespace Slowback.WebAPI.Tests.Controllers;
+namespace Slowback.SampleProject.WebAPI.Tests.Controllers;
 
 public class ToDoControllerTests
 {

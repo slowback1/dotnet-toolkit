@@ -1,12 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Slowback.Common;
+using Slowback.Data.Core.EF;
+using Slowback.SampleProject.Data.Core;
 
-namespace Slowback.WebAPI.Controllers;
+namespace Slowback.SampleProject.WebAPI.Controllers;
 
 public class BaseController : Controller
 {
+    protected readonly SampleAppContext _context;
+
+    public BaseController(IConfiguration config)
+    {
+        _context = LoadAppContext(config);
+    }
+
+    private SampleAppContext LoadAppContext(IConfiguration config)
+    {
+        var databaseConfig = config.GetSection("Database").Get<ConnectionOptions>()!;
+
+        return new SampleAppContext(databaseConfig);
+    }
+
+
     public override void OnActionExecuting(ActionExecutingContext context)
     {
         ValidateInputs(context);
@@ -22,5 +38,10 @@ public class BaseController : Controller
 
         if (validationErrors.Count > 0)
             context.Result = Ok(new ApiResponse<object> { ErrorMessages = validationErrors });
+    }
+
+    protected ApiResponse<T> Wrap<T>(T data)
+    {
+        return new ApiResponse<T> { Data = data };
     }
 }

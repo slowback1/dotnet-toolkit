@@ -2,7 +2,7 @@
 using Slowback.Logger.LoggingEngines;
 using TimeProvider = Slowback.Time.TimeProvider;
 
-namespace Slowback.WebAPI;
+namespace Slowback.SampleProject.WebAPI;
 
 public static class Startup
 {

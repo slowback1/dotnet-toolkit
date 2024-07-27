@@ -2,18 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>10</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Slowback.Data.Core.EF\Slowback.Data.Core.EF.csproj"/>
+        <ProjectReference Include="..\Slowback.Common\Slowback.Common.csproj"/>
+        <ProjectReference Include="..\Slowback.Messaging\Slowback.Messaging.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.Core\Slowback.SampleProject.Data.Core.csproj"/>
-        <ProjectReference Include="..\Slowback.Time\Slowback.Time.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="NUnit" Version="3.13.3"/>
     </ItemGroup>
 
 </Project>

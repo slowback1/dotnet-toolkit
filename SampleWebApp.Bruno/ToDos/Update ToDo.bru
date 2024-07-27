@@ -1,0 +1,26 @@
+meta {
+  name: Update ToDo
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{url}}/todos/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": 1,
+    "description": "updated description",
+    "isComplete": true
+  }
+}
+
+assert {
+  res.body.errorMessages: isEmpty 
+  res.body.data.id: eq 1
+  res.body.data.description: eq updated description
+  res.body.data.isComplete: eq true
+}

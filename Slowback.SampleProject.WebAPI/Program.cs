@@ -1,4 +1,4 @@
-using Slowback.WebAPI;
+using Slowback.SampleProject.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 

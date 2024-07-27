@@ -1,0 +1,24 @@
+meta {
+  name: Create ToDo
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{url}}/todos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "Write more Tests"
+  }
+}
+
+assert {
+  res.body.data.id: gt 0
+  res.body.data.description: eq Write more Tests
+  res.body.data.isComplete: eq false
+  res.body.errorMessages: isEmpty []
+}
