@@ -1,6 +1,6 @@
 ﻿using Slowback.Common;
 using Slowback.Logger.LoggingEngines;
-using TimeProvider = Slowback.Time.TimeProvider;
+using Slowback.Time;
 
 namespace Slowback.SampleProject.WebAPI;
 
@@ -11,7 +11,7 @@ public static class Startup
         Logger.Logger.EnableLogging(new List<ILoggingEngine>
         {
             new ConsoleLoggingEngine(),
-            new FileLoggingEngine(new TimeProvider(), new FileLoggingEngineSettings
+            new FileLoggingEngine(TimeEnvironment.Provider, new FileLoggingEngineSettings
             {
                 LogRotationStrategy = FileLogRotationStrategy.Monthly,
                 TimestampFormat = FileLoggingTimestampFormat.Short

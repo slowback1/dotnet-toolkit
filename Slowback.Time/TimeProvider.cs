@@ -1,7 +1,6 @@
 ﻿namespace Slowback.Time;
 
-public class TimeProvider : ITimeProvider
-
+internal class TimeProvider : ITimeProvider
 {
     public DateTime Now()
     {
