@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Slowback.Data.Core.EF\Slowback.Data.Core.EF.csproj"/>
+        <ProjectReference Include="..\Slowback.Mailer\Slowback.Mailer.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.Core\Slowback.SampleProject.Data.Core.csproj"/>
         <ProjectReference Include="..\Slowback.Time\Slowback.Time.csproj"/>
     </ItemGroup>
