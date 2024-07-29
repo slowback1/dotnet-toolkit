@@ -32,16 +32,15 @@ public class FileLoggingEngine : ILoggingEngine
 
     private readonly ITimeProvider _timeProvider;
 
-    public FileLoggingEngine(ITimeProvider timeProvider)
+    public FileLoggingEngine()
     {
+        _timeProvider = TimeEnvironment.Provider;
         Settings = DefaultSettings;
-        _timeProvider = timeProvider;
     }
 
-    public FileLoggingEngine(ITimeProvider timeProvider, FileLoggingEngineSettings settings)
+    public FileLoggingEngine(FileLoggingEngineSettings settings) : this()
     {
         Settings = settings;
-        _timeProvider = timeProvider;
     }
 
     private FileLoggingEngineSettings Settings { get; }

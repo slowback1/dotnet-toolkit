@@ -9,6 +9,12 @@ public class FileLoggingEngineTests
     private static readonly string FileName = "2021-01-01.log";
     private static ITimeProvider TimeProvider => new TestTimeProvider(new DateTime(2021, 1, 1));
 
+    [SetUp]
+    public void SetUp()
+    {
+        TimeEnvironment.SetProvider(TimeProvider);
+    }
+
     [TearDown]
     public void TearDown()
     {
@@ -21,7 +27,7 @@ public class FileLoggingEngineTests
     public void FileLoggingEngineLogsMessageToFile()
     {
         var filePath = Path.Combine(Path.GetTempPath(), FileName);
-        var fileLoggingEngine = new FileLoggingEngine(TimeProvider);
+        var fileLoggingEngine = new FileLoggingEngine();
         fileLoggingEngine.Log("Test");
 
         Assert.That(File.ReadAllText(filePath), Is.EqualTo("Test" + Environment.NewLine));
@@ -31,7 +37,7 @@ public class FileLoggingEngineTests
     public void FileLoggingEngineAppendsMessageToFile()
     {
         var filePath = Path.Combine(Path.GetTempPath(), FileName);
-        var fileLoggingEngine = new FileLoggingEngine(TimeProvider);
+        var fileLoggingEngine = new FileLoggingEngine();
         fileLoggingEngine.Log("Test");
         fileLoggingEngine.Log("Test2");
 
@@ -43,7 +49,7 @@ public class FileLoggingEngineTests
     public void FileLoggingEngineCanSupportPrependingWithAShortTimestamp()
     {
         var filePath = Path.Combine(Path.GetTempPath(), FileName);
-        var fileLoggingEngine = new FileLoggingEngine(TimeProvider, new FileLoggingEngineSettings
+        var fileLoggingEngine = new FileLoggingEngine(new FileLoggingEngineSettings
         {
             TimestampFormat = FileLoggingTimestampFormat.Short
         });
@@ -59,7 +65,7 @@ public class FileLoggingEngineTests
     public void FileLoggingEngineCanSupportPrependingWithALongTimestamp()
     {
         var filePath = Path.Combine(Path.GetTempPath(), FileName);
-        var fileLoggingEngine = new FileLoggingEngine(TimeProvider, new FileLoggingEngineSettings
+        var fileLoggingEngine = new FileLoggingEngine(new FileLoggingEngineSettings
         {
             TimestampFormat = FileLoggingTimestampFormat.Long
         });
@@ -78,7 +84,9 @@ public class FileLoggingEngineTests
 
         if (File.Exists(filePath)) File.Delete(filePath);
 
-        var fileLoggingEngine = new FileLoggingEngine(new TestTimeProvider(new DateTime(2021, 1, 2)));
+        var otherTimeProvider = new TestTimeProvider(new DateTime(2021, 1, 2));
+        TimeEnvironment.SetProvider(otherTimeProvider);
+        var fileLoggingEngine = new FileLoggingEngine();
         fileLoggingEngine.Log("Test");
 
         var logFileContents = File.ReadAllText(filePath);
@@ -101,12 +109,15 @@ public class FileLoggingEngineTests
 
         if (File.Exists(filePath)) File.Delete(filePath);
 
+        var timeProvider = new TestTimeProvider(new DateTime(2024, 7, 22 + daysAfterMonday));
+
+        TimeEnvironment.SetProvider(timeProvider);
+
         var fileLoggingEngine =
-            new FileLoggingEngine(new TestTimeProvider(new DateTime(2024, 7, 22 + daysAfterMonday)),
-                new FileLoggingEngineSettings
-                {
-                    LogRotationStrategy = FileLogRotationStrategy.Weekly
-                });
+            new FileLoggingEngine(new FileLoggingEngineSettings
+            {
+                LogRotationStrategy = FileLogRotationStrategy.Weekly
+            });
         fileLoggingEngine.Log("Test");
 
         var logFileContents = File.ReadAllText(filePath);
@@ -153,12 +164,14 @@ public class FileLoggingEngineTests
 
         if (File.Exists(filePath)) File.Delete(filePath);
 
+        var timeProvider = new TestTimeProvider(new DateTime(2024, 7, dayOfTheMonth));
+        TimeEnvironment.SetProvider(timeProvider);
+
         var fileLoggingEngine =
-            new FileLoggingEngine(new TestTimeProvider(new DateTime(2024, 7, dayOfTheMonth)),
-                new FileLoggingEngineSettings
-                {
-                    LogRotationStrategy = FileLogRotationStrategy.Monthly
-                });
+            new FileLoggingEngine(new FileLoggingEngineSettings
+            {
+                LogRotationStrategy = FileLogRotationStrategy.Monthly
+            });
         fileLoggingEngine.Log("Test");
 
         var logFileContents = File.ReadAllText(filePath);
