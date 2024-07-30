@@ -98,6 +98,6 @@ public static class MigrationStartup
             return 1;
         }
 
-        return 0;
+        return MigrationInputHandler.HandleInput(action, args.ElementAtOrDefault(1));
     }
 }
