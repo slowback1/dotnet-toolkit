@@ -21,6 +21,8 @@ JsonConvert.DefaultSettings = () =>
     return settings;
 };
 
+Startup.PublishAppDbConnection(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

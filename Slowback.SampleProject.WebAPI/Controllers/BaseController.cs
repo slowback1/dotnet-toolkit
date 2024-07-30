@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Slowback.Common;
 using Slowback.Data.Core.EF;
+using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;
@@ -17,7 +18,7 @@ public class BaseController : Controller
 
     private SampleAppContext LoadAppContext(IConfiguration config)
     {
-        var databaseConfig = config.GetSection("Database").Get<ConnectionOptions>()!;
+        var databaseConfig = MessageBus.GetLastMessage<ConnectionOptions>(Messages.AppDbConnection);
 
         return new SampleAppContext(databaseConfig);
     }
