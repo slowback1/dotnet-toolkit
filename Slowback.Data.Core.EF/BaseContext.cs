@@ -16,7 +16,7 @@ public class BaseContext : DbContext
         HandleOptionsBuilding(optionsBuilder, _connectionOptions);
     }
 
-    public static void HandleOptionsBuilding(DbContextOptionsBuilder optionsBuilder, ConnectionOptions options)
+    private static void HandleOptionsBuilding(DbContextOptionsBuilder optionsBuilder, ConnectionOptions options)
     {
         switch (options.DatabaseType)
         {
