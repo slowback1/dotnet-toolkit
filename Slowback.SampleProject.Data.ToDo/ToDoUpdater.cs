@@ -1,5 +1,6 @@
 ﻿using Slowback.Common;
 using Slowback.Common.Dtos;
+using Slowback.Mapper;
 using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
 using Slowback.Time;
@@ -29,8 +30,9 @@ public class ToDoUpdater : BaseDatabaseAction
 
     private static void MapUpdatedTodo(EditToDo dto, Core.Models.ToDo toDo)
     {
-        toDo.Description = dto.Description;
-        toDo.IsComplete = dto.IsComplete;
+        var convertedToDo = dto.ConvertToEntity();
+
+        convertedToDo.Map(toDo);
 
         if (toDo.IsComplete)
             toDo.CompletedAt = TimeEnvironment.Provider.Today();
