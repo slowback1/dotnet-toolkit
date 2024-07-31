@@ -8,7 +8,7 @@ internal static class MigrationFileWriter
 {
     public static void Write(DataMigration migration)
     {
-        var directory = MigrationDirectoryProvider.Directory;
+        var directory = MigrationDirectoryProvider.MigrationOutputDirectory;
 
         if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 

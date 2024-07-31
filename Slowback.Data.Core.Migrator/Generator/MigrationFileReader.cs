@@ -17,7 +17,7 @@ internal static class MigrationFileReader
 
     private static string? ReadFromMigrationFile()
     {
-        var directory = MigrationDirectoryProvider.Directory;
+        var directory = MigrationDirectoryProvider.MigrationOutputDirectory;
 
         if (!Directory.Exists(directory)) return null;
 

@@ -24,7 +24,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         var scaffolder = new SqlFileScaffolder(migration);
         scaffolder.Scaffold();
 
-        var filePath = Path.Combine(MigrationDirectoryProvider.Directory, fileName);
+        var filePath = Path.Combine(MigrationDirectoryProvider.MigrationOutputDirectory, fileName);
         Assert.True(File.Exists(filePath));
     }
 
@@ -45,7 +45,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         var scaffolder = new SqlFileScaffolder(migration);
         scaffolder.Scaffold();
 
-        var filePath = Path.Combine(MigrationDirectoryProvider.Directory, fileName);
+        var filePath = Path.Combine(MigrationDirectoryProvider.MigrationOutputDirectory, fileName);
         var fileContent = File.ReadAllText(filePath);
 
         Assert.That(fileContent, Contains.Substring("-- Write your SQL here"));
@@ -68,7 +68,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         var scaffolder = new SqlFileScaffolder(migration);
         scaffolder.Scaffold();
 
-        var filePath = Path.Combine(MigrationDirectoryProvider.Directory, fileName);
+        var filePath = Path.Combine(MigrationDirectoryProvider.MigrationOutputDirectory, fileName);
         var fileContent = File.ReadAllText(filePath);
 
         Assert.That(fileContent, Contains.Substring("THROW 51000, 'This is a placeholder for your SQL.', 1"));

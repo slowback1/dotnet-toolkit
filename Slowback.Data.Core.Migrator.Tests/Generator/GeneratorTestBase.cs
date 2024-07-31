@@ -10,10 +10,10 @@ public abstract class GeneratorTestBase
     [TearDown]
     public void DeleteFileDirectory()
     {
-        MigrationDirectoryProvider.Directory = Directory.GetCurrentDirectory() + "/Something";
+        MigrationDirectoryProvider.MigrationOutputDirectory = Directory.GetCurrentDirectory() + "/Something";
 
-        if (Directory.Exists(MigrationDirectoryProvider.Directory))
-            Directory.Delete(MigrationDirectoryProvider.Directory, true);
+        if (Directory.Exists(MigrationDirectoryProvider.MigrationOutputDirectory))
+            Directory.Delete(MigrationDirectoryProvider.MigrationOutputDirectory, true);
     }
 
     [SetUp]

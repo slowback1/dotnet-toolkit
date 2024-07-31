@@ -14,8 +14,8 @@ internal class SqlFileScaffolder
 
     public void Scaffold()
     {
-        var upFilePath = Path.Combine(MigrationDirectoryProvider.Directory, _migration.UpFileName);
-        var downFilePath = Path.Combine(MigrationDirectoryProvider.Directory, _migration.DownFileName);
+        var upFilePath = Path.Combine(MigrationDirectoryProvider.MigrationOutputDirectory, _migration.UpFileName);
+        var downFilePath = Path.Combine(MigrationDirectoryProvider.MigrationOutputDirectory, _migration.DownFileName);
 
         EnsureDirectoryExists();
 
@@ -27,8 +27,8 @@ internal class SqlFileScaffolder
 
     private void EnsureDirectoryExists()
     {
-        if (!Directory.Exists(MigrationDirectoryProvider.Directory))
-            Directory.CreateDirectory(MigrationDirectoryProvider.Directory);
+        if (!Directory.Exists(MigrationDirectoryProvider.MigrationOutputDirectory))
+            Directory.CreateDirectory(MigrationDirectoryProvider.MigrationOutputDirectory);
     }
 
     private string GetMigrationContent()

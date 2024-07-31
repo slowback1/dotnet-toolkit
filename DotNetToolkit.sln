@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Data.Core.Migrator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.Data.Core.Migrator.Tests", "Slowback.Data.Core.Migrator.Tests\Slowback.Data.Core.Migrator.Tests.csproj", "{F844BE17-B873-40C4-84AE-DDA377FCAF48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data.Migration", "Slowback.SampleProject.Data.Migration\Slowback.SampleProject.Data.Migration.csproj", "{A49D62C7-9C01-4AB5-8934-7DED2D2DE139}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,10 @@ Global
 		{F844BE17-B873-40C4-84AE-DDA377FCAF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F844BE17-B873-40C4-84AE-DDA377FCAF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F844BE17-B873-40C4-84AE-DDA377FCAF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F} = {91D9D0FE-EA3F-4617-91CE-B56AE3580A12}
@@ -177,5 +183,6 @@ Global
 		{1086A826-D7A0-43D8-BD17-AC3A92F89E23} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
 		{C0B13C7A-9D70-4B82-A5DF-AF2763705A10} = {BF662044-9B9C-4E26-9DD0-5ADE0F0B9CAA}
 		{F844BE17-B873-40C4-84AE-DDA377FCAF48} = {BF662044-9B9C-4E26-9DD0-5ADE0F0B9CAA}
+		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
 	EndGlobalSection
 EndGlobal

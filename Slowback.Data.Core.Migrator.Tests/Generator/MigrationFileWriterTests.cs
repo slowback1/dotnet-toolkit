@@ -21,7 +21,7 @@ public class MigrationFileWriterTests : GeneratorTestBase
 
         MigrationFileWriter.Write(migration);
 
-        var directory = MigrationDirectoryProvider.Directory;
+        var directory = MigrationDirectoryProvider.MigrationOutputDirectory;
 
         Assert.IsTrue(File.Exists($"{directory}/MigrationHistory.json"));
 
