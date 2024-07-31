@@ -110,13 +110,23 @@ MigrationDirectoryProvider.MigrationInputDirectory = Path.Combine(workingDirecto
 return MigrationStartup.StartMigrator(args);
 ```
 
-3. In your .CsProj file, add the following item group:
+3. In your .CsProj file, add the following item groups:
 
 ```xml
     <ItemGroup>
         <Content Include="Migrations\*.*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.*.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 ```
 
