@@ -13,13 +13,12 @@ public class MigrationFileReaderTests : GeneratorTestBase
     }
 
     [Test]
-    public void ReadsFromTheJsonFileIfItIsPresent()
+    public void ReadsFromTheCsvFileIfItIsPresent()
     {
         var migration = new DataMigration
         {
-            Number = 1,
             Name = "Test",
-            TimeStamp = DateTime.Now,
+            CreatedTime = DateTime.Now,
             UpFileName = "1_Test_Up.sql",
             DownFileName = "1_Test_Down.sql"
         };
@@ -30,7 +29,6 @@ public class MigrationFileReaderTests : GeneratorTestBase
 
         Assert.That(migrations.Count, Is.EqualTo(1));
 
-        Assert.That(migrations[0].Number, Is.EqualTo(1));
         Assert.That(migrations[0].Name, Is.EqualTo("Test"));
         Assert.That(migrations[0].UpFileName, Is.EqualTo("1_Test_Up.sql"));
         Assert.That(migrations[0].DownFileName, Is.EqualTo("1_Test_Down.sql"));

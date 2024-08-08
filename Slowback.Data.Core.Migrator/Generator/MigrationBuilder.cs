@@ -7,15 +7,19 @@ internal static class MigrationBuilder
 {
     public static DataMigration BuildMigration(string name)
     {
-        var migrationNumber = MigrationNumberRetriever.GetNextMigrationNumber();
+        var migrationNumber = BuildMigrationTimestamp(TimeEnvironment.Provider.Now());
 
         return new DataMigration
         {
             Name = name,
-            Number = migrationNumber,
-            TimeStamp = TimeEnvironment.Provider.Now(),
+            CreatedTime = TimeEnvironment.Provider.Now(),
             DownFileName = $"{migrationNumber}_{name}_Down.sql",
             UpFileName = $"{migrationNumber}_{name}_Up.sql"
         };
+    }
+
+    private static string BuildMigrationTimestamp(DateTime date)
+    {
+        return date.ToString("yyyyMMddHHmmss");
     }
 }

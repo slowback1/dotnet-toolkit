@@ -16,8 +16,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         {
             UpFileName = "1_Initial_Up.sql",
             Name = "Initial",
-            Number = 1,
-            TimeStamp = TimeEnvironment.Provider.Now(),
+            CreatedTime = TimeEnvironment.Provider.Now(),
             DownFileName = "1_Initial_Down.sql"
         };
 
@@ -37,8 +36,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         {
             UpFileName = "1_Initial_Up.sql",
             Name = "Initial",
-            Number = 1,
-            TimeStamp = TimeEnvironment.Provider.Now(),
+            CreatedTime = TimeEnvironment.Provider.Now(),
             DownFileName = "1_Initial_Down.sql"
         };
 
@@ -60,8 +58,7 @@ public class SqlFileScaffolderTests : GeneratorTestBase
         {
             UpFileName = "1_Initial_Up.sql",
             Name = "Initial",
-            Number = 1,
-            TimeStamp = TimeEnvironment.Provider.Now(),
+            CreatedTime = TimeEnvironment.Provider.Now(),
             DownFileName = "1_Initial_Down.sql"
         };
 

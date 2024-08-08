@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text;
 using Slowback.Data.Core.Migrator.DirectoryProvider;
 using Slowback.Data.Core.Migrator.Models;
 
@@ -16,8 +16,26 @@ internal static class MigrationFileWriter
 
         existingMigrations.Add(migration);
 
-        var fileContents = JsonConvert.SerializeObject(existingMigrations);
+        var fileContents = GenerateCsv(existingMigrations);
 
-        File.WriteAllText($"{directory}/MigrationHistory.json", fileContents);
+        File.WriteAllText($"{directory}/MigrationHistory.csv", fileContents);
+    }
+
+    private static string GenerateCsv(IEnumerable<DataMigration> migrations)
+    {
+        var csv = new StringBuilder();
+        csv.Append(WriteCsvHeader() + "\n");
+        foreach (var migration in migrations) csv.Append(WriteCsvRow(migration) + "\n");
+        return csv.ToString();
+    }
+
+    private static string WriteCsvHeader()
+    {
+        return "Name,CreatedTime,UpFileName,DownFileName";
+    }
+
+    private static string WriteCsvRow(DataMigration migration)
+    {
+        return $"{migration.Name},{migration.CreatedTime},{migration.UpFileName},{migration.DownFileName}";
     }
 }
