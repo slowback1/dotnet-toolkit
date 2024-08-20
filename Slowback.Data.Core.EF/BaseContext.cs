@@ -4,7 +4,7 @@ namespace Slowback.Data.Core.EF;
 
 public class BaseContext : DbContext
 {
-    private readonly ConnectionOptions _connectionOptions;
+    protected readonly ConnectionOptions _connectionOptions;
 
     public BaseContext(ConnectionOptions connectionOptions)
     {
