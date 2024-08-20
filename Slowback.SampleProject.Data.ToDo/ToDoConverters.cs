@@ -1,4 +1,4 @@
-﻿using Slowback.Common.Dtos;
+﻿using Slowback.SampleProject.Common.Dtos;
 
 namespace Slowback.SampleProject.Data.ToDo;
 

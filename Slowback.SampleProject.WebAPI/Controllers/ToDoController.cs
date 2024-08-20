@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Slowback.Common;
-using Slowback.Common.Dtos;
+using Slowback.SampleProject.Common.Dtos;
 using Slowback.SampleProject.Data.ToDo;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;

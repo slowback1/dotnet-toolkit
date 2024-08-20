@@ -1,4 +1,4 @@
-﻿using Slowback.Common.Dtos;
+﻿using Slowback.SampleProject.Common.Dtos;
 using Slowback.TestUtilities;
 using Slowback.Time;
 

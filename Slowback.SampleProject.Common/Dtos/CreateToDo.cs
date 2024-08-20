@@ -1,6 +1,6 @@
 ﻿using Slowback.Validator.Attributes;
 
-namespace Slowback.Common.Dtos;
+namespace Slowback.SampleProject.Common.Dtos;
 
 public class CreateToDo
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Slowback.Common.Dtos;
+namespace Slowback.SampleProject.Common.Dtos;
 
 public class GetToDo
 {

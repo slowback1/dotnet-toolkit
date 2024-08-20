@@ -20,6 +20,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Slowback.Common\Slowback.Common.csproj"/>
         <ProjectReference Include="..\Slowback.Logger\Slowback.Logger.csproj"/>
+        <ProjectReference Include="..\Slowback.SampleProject.Common\Slowback.SampleProject.Common.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.Core\Slowback.SampleProject.Data.Core.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.ToDo\Slowback.SampleProject.Data.ToDo.csproj"/>
         <ProjectReference Include="..\Slowback.Validator\Slowback.Validator.csproj"/>

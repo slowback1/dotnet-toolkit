@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Slowback.Common.Dtos;
+using Slowback.SampleProject.Common.Dtos;
 using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.Data.ToDo;

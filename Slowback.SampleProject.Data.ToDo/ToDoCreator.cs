@@ -1,6 +1,6 @@
 ﻿using Slowback.Common;
-using Slowback.Common.Dtos;
 using Slowback.Messaging;
+using Slowback.SampleProject.Common.Dtos;
 using Slowback.SampleProject.Data.Core;
 using Slowback.Time;
 
