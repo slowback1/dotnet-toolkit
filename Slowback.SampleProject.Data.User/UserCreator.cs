@@ -13,11 +13,7 @@ public class UserCreator : BaseDatabaseAction
     {
         var id = GenerateGuid();
 
-        var user = new Core.Models.User
-        {
-            Id = id,
-            Name = dto.Name
-        };
+        var user = dto.ConvertToModel(id);
 
         await _context.Users.AddAsync(user);
 
