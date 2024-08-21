@@ -11,4 +11,5 @@ public class SampleAppContext : BaseContext
     }
 
     public virtual DbSet<ToDo> ToDos { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 }

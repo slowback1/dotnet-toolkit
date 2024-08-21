@@ -56,6 +56,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Common", "Slowback.SampleProject.Common\Slowback.SampleProject.Common.csproj", "{5E1FF361-B910-4036-9505-C08B85525F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data.User", "Slowback.SampleProject.Data.User\Slowback.SampleProject.Data.User.csproj", "{7E77C1DF-D1E9-432E-AF73-697C30B299D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data.User.Tests", "Slowback.SampleProject.Data.User.Tests\Slowback.SampleProject.Data.User.Tests.csproj", "{85109725-D343-4B24-93BE-2049441EB3F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,6 +170,14 @@ Global
 		{5E1FF361-B910-4036-9505-C08B85525F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E1FF361-B910-4036-9505-C08B85525F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E1FF361-B910-4036-9505-C08B85525F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E77C1DF-D1E9-432E-AF73-697C30B299D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E77C1DF-D1E9-432E-AF73-697C30B299D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E77C1DF-D1E9-432E-AF73-697C30B299D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E77C1DF-D1E9-432E-AF73-697C30B299D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85109725-D343-4B24-93BE-2049441EB3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85109725-D343-4B24-93BE-2049441EB3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85109725-D343-4B24-93BE-2049441EB3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85109725-D343-4B24-93BE-2049441EB3F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F} = {91D9D0FE-EA3F-4617-91CE-B56AE3580A12}
@@ -191,5 +203,7 @@ Global
 		{F844BE17-B873-40C4-84AE-DDA377FCAF48} = {BF662044-9B9C-4E26-9DD0-5ADE0F0B9CAA}
 		{A49D62C7-9C01-4AB5-8934-7DED2D2DE139} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
 		{5E1FF361-B910-4036-9505-C08B85525F5F} = {DF1ECD43-9D25-44D3-8939-C53AA1513AA0}
+		{7E77C1DF-D1E9-432E-AF73-697C30B299D1} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
+		{85109725-D343-4B24-93BE-2049441EB3F5} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
 	EndGlobalSection
 EndGlobal
