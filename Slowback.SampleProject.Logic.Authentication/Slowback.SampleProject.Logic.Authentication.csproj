@@ -10,4 +10,9 @@
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\Slowback.Common\Slowback.Common.csproj"/>
+        <ProjectReference Include="..\Slowback.Messaging\Slowback.Messaging.csproj"/>
+    </ItemGroup>
+
 </Project>

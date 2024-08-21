@@ -23,6 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Slowback.Common\Slowback.Common.csproj"/>
+        <ProjectReference Include="..\Slowback.Messaging\Slowback.Messaging.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Logic.Authentication\Slowback.SampleProject.Logic.Authentication.csproj"/>
     </ItemGroup>
 
