@@ -12,12 +12,17 @@ public class UserRetriever : BaseDatabaseAction
 
     public async Task<GetUser?> GetUserById(string userId)
     {
-        var user = await _context.Users
-            .Where(u => u.Id.ToString() == userId)
-            .FirstOrDefaultAsync();
+        var user = await GetUserModelById(userId);
 
         if (user == null) return null;
 
         return user.ConvertToDto();
+    }
+
+    internal async Task<Core.Models.User?> GetUserModelById(string userId)
+    {
+        return await _context.Users
+            .Where(u => u.Id.ToString() == userId)
+            .FirstOrDefaultAsync();
     }
 }

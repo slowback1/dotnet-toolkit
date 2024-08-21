@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Slowback.Common;
+using Slowback.Messaging;
 using Slowback.SampleProject.Common.Dtos;
 using Slowback.TestUtilities;
 
@@ -69,5 +71,22 @@ public class UserCreatorTests : BaseDbTest
 
         Assert.That(user, Is.Not.Null);
         Assert.That(user.Name, Is.EqualTo(dto.Name));
+    }
+
+    [Test]
+    public async Task CreatingAUserSendsTheNewIdToTheMessageBus()
+    {
+        var creator = new UserCreator(_context);
+
+        var dto = new CreateUser
+        {
+            Name = "Test User"
+        };
+
+        var userId = await creator.CreateUser(dto);
+
+        var lastMessage = MessageBus.GetLastMessage<string>(Messages.UserCreated);
+
+        Assert.That(lastMessage, Is.EqualTo(userId));
     }
 }

@@ -7,4 +7,6 @@ public static class Messages
     public const string ToDoUpdated = "ToDoUpdated";
     public const string SendEmail = "SendEmail";
     public const string AppDbConnection = "AppDbConnection";
+    public const string UserCreated = "UserCreated";
+    public const string UserUpdated = "UserUpdated";
 }

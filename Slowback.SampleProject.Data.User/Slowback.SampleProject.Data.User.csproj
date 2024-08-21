@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Slowback.Common\Slowback.Common.csproj"/>
         <ProjectReference Include="..\Slowback.Mapper\Slowback.Mapper.csproj"/>
+        <ProjectReference Include="..\Slowback.Messaging\Slowback.Messaging.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Common\Slowback.SampleProject.Common.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.Core\Slowback.SampleProject.Data.Core.csproj"/>
     </ItemGroup>
