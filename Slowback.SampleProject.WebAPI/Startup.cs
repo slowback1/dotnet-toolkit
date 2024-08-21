@@ -3,6 +3,7 @@ using Slowback.Common;
 using Slowback.Data.Core.EF;
 using Slowback.Logger.LoggingEngines;
 using Slowback.Messaging;
+using Slowback.SampleProject.Logic.Authentication;
 
 namespace Slowback.SampleProject.WebAPI;
 
@@ -29,5 +30,12 @@ public static class Startup
             throw new InvalidConfigurationException("Database section is missing from configuration file.");
 
         MessageBus.Publish(Messages.AppDbConnection, section);
+    }
+
+    public static void SetUpJwtSettingsPublisher(ConfigurationManager configurationManager)
+    {
+        var section = configurationManager.GetSection("Jwt").Get<JwtConfig>();
+
+        JwtSettingsPublisher.PublishJwtSettings(section);
     }
 }

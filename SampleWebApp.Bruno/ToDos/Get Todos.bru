@@ -7,10 +7,10 @@ meta {
 get {
   url: {{url}}/todos
   body: none
-  auth: none
+  auth: inherit
 }
 
 assert {
-  res.body.errorMessages: isEmpty 
+  res.body.errorMessages: isEmpty
   res.body.data.length: gt 0
 }

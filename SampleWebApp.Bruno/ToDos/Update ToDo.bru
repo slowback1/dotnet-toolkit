@@ -7,7 +7,7 @@ meta {
 put {
   url: {{url}}/todos/1
   body: json
-  auth: none
+  auth: inherit
 }
 
 body:json {
@@ -19,7 +19,7 @@ body:json {
 }
 
 assert {
-  res.body.errorMessages: isEmpty 
+  res.body.errorMessages: isEmpty
   res.body.data.id: eq 1
   res.body.data.description: eq updated description
   res.body.data.isComplete: eq true

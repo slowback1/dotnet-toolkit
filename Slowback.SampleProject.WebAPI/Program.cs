@@ -22,6 +22,7 @@ JsonConvert.DefaultSettings = () =>
 };
 
 Startup.PublishAppDbConnection(builder.Configuration);
+Startup.SetUpJwtSettingsPublisher(builder.Configuration);
 
 var app = builder.Build();
 

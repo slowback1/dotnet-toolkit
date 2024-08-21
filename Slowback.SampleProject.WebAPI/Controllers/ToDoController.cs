@@ -2,10 +2,12 @@
 using Slowback.Common;
 using Slowback.SampleProject.Common.Dtos;
 using Slowback.SampleProject.Data.ToDo;
+using Slowback.SampleProject.WebAPI.Attributes;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;
 
 [Route("todos")]
+[Auth]
 public class ToDoController : BaseController
 {
     public ToDoController(IConfiguration config) : base(config)
@@ -18,7 +20,7 @@ public class ToDoController : BaseController
     {
         var retriever = new ToDoRetriever(_context);
 
-        var todos = await retriever.GetToDos();
+        var todos = await retriever.GetToDosForUser(UserId!);
 
         return Wrap(todos.ToList());
     }
@@ -29,7 +31,7 @@ public class ToDoController : BaseController
     {
         var creator = new ToDoCreator(_context);
 
-        var todo = await creator.CreateToDo(createToDo, Guid.NewGuid().ToString());
+        var todo = await creator.CreateToDo(createToDo, UserId!);
 
         var retriever = new ToDoRetriever(_context);
 

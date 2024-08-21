@@ -65,6 +65,12 @@ public class UserAuthenticatorTests
 
 public class UserAuthenticatorNoSetupTests
 {
+    [SetUp]
+    public void SetUpMessageBusEnvironment()
+    {
+        MessageBus.ClearMessages();
+    }
+
     [Test]
     public void ThrowsArgumentNullExceptionWhenJwtAudienceIsNull()
     {

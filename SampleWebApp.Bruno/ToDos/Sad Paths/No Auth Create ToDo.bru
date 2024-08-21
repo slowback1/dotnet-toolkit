@@ -1,0 +1,17 @@
+meta {
+  name: No Auth Create ToDo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/todos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "Write more Tests"
+  }
+}

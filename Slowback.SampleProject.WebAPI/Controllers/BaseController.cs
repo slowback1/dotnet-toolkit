@@ -4,6 +4,7 @@ using Slowback.Common;
 using Slowback.Data.Core.EF;
 using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
+using Slowback.SampleProject.Logic.Authentication;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;
 
@@ -16,6 +17,8 @@ public class BaseController : Controller
         _context = LoadAppContext(config);
     }
 
+    protected string? UserId { get; set; }
+
     private SampleAppContext LoadAppContext(IConfiguration config)
     {
         var databaseConfig = MessageBus.GetLastMessage<ConnectionOptions>(Messages.AppDbConnection);
@@ -26,7 +29,17 @@ public class BaseController : Controller
 
     public override void OnActionExecuting(ActionExecutingContext context)
     {
+        GetUserId();
         ValidateInputs(context);
+    }
+
+    private void GetUserId()
+    {
+        var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+        var handler = new UserAuthenticator();
+
+        UserId = handler.ValidateToken(token);
     }
 
     private void ValidateInputs(ActionExecutingContext context)
@@ -44,5 +57,10 @@ public class BaseController : Controller
     protected ApiResponse<T> Wrap<T>(T data)
     {
         return new ApiResponse<T> { Data = data };
+    }
+
+    protected ApiResponse<T> NoContent<T>()
+    {
+        return new ApiResponse<T> { Data = default, ErrorMessages = new List<string> { "No content found." } };
     }
 }
