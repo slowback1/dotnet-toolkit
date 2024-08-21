@@ -125,7 +125,7 @@ public class JwtMakerTests
 
         var token = handler.ReadJwtToken(jwt);
 
-        Assert.That(token.Claims.First().Type, Is.EqualTo("userId"));
+        Assert.That(token.Claims.First().Type, Is.EqualTo("UserId"));
         Assert.That(token.Claims.First().Value, Is.EqualTo("my cool id"));
     }
 }

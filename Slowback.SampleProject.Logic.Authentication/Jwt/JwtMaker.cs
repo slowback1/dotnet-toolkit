@@ -14,7 +14,7 @@ internal class JwtMakerOptions
     internal TimeSpan Expiration { get; set; }
 }
 
-internal class JwtMaker
+internal class JwtMaker : Jwt
 {
     public JwtMaker(JwtMakerOptions options)
     {
@@ -46,7 +46,7 @@ internal class JwtMaker
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim("userId", userId)
+                new Claim(UserIdClaimType, userId)
             }),
             Expires = DateTime.UtcNow.Add(Options.Expiration),
             Issuer = Options.Issuer,
@@ -63,12 +63,5 @@ internal class JwtMaker
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
-    }
-
-    private string LeftPadSigningKey(string signingKey)
-    {
-        if (signingKey.Length < 32) return signingKey.PadLeft(32, '0');
-
-        return signingKey;
     }
 }
