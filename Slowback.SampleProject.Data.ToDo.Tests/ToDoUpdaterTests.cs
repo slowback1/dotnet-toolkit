@@ -12,18 +12,21 @@ public class ToDoUpdaterTests : BaseDbTest
     private readonly DateTime Today = new(2024, 7, 7);
     private ToDoUpdater _updater { get; set; }
     private int _toDoId { get; set; }
+    private string UserId { get; set; }
 
 
     [SetUp]
     public async Task SetUp()
     {
+        UserId = Guid.NewGuid().ToString();
+
         TimeEnvironment.SetProvider(new TestTimeProvider(Today));
 
         _updater = new ToDoUpdater(_context);
 
         var creator = new ToDoCreator(_context);
 
-        _toDoId = await creator.CreateToDo(new CreateToDo { Description = "test" });
+        _toDoId = await creator.CreateToDo(new CreateToDo { Description = "test" }, UserId);
     }
 
     [Test]

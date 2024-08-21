@@ -4,11 +4,12 @@ namespace Slowback.SampleProject.Data.ToDo;
 
 internal static class ToDoConverters
 {
-    public static Core.Models.ToDo ConvertToEntity(this CreateToDo dto)
+    public static Core.Models.ToDo ConvertToEntity(this CreateToDo dto, string userId)
     {
         return new Core.Models.ToDo
         {
-            Description = dto.Description
+            Description = dto.Description,
+            UserId = new Guid(userId)
         };
     }
 

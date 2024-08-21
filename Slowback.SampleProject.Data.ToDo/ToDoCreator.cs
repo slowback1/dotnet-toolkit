@@ -12,9 +12,9 @@ public class ToDoCreator : BaseDatabaseAction
     {
     }
 
-    public async Task<int> CreateToDo(CreateToDo dto)
+    public async Task<int> CreateToDo(CreateToDo dto, string userId)
     {
-        var toDo = dto.ConvertToEntity();
+        var toDo = dto.ConvertToEntity(userId);
 
         toDo.CreatedAt = TimeEnvironment.Provider.Today();
 

@@ -9,11 +9,13 @@ namespace Slowback.SampleProject.Data.ToDo.Tests;
 public class ToDoCreatorTests : BaseDbTest
 {
     private ToDoCreator _creator { get; set; }
+    private string UserId { get; set; }
 
     [SetUp]
     public void Setup()
     {
         _creator = new ToDoCreator(_context);
+        UserId = Guid.NewGuid().ToString();
     }
 
     [Test]
@@ -24,7 +26,7 @@ public class ToDoCreatorTests : BaseDbTest
             Description = "Test Description"
         };
 
-        var result = await _creator.CreateToDo(dto);
+        var result = await _creator.CreateToDo(dto, UserId);
 
         Assert.That(result, Is.GreaterThan(0));
     }
@@ -37,12 +39,13 @@ public class ToDoCreatorTests : BaseDbTest
             Description = "Test Description"
         };
 
-        var result = await _creator.CreateToDo(dto);
+        var result = await _creator.CreateToDo(dto, UserId);
 
         var toDo = await _lookupContext.ToDos.FindAsync(result);
 
         Assert.That(toDo, Is.Not.Null);
         Assert.That(toDo.Description, Is.EqualTo(dto.Description));
+        Assert.That(toDo.UserId, Is.EqualTo(new Guid(UserId)));
     }
 
     [Test]
@@ -53,7 +56,7 @@ public class ToDoCreatorTests : BaseDbTest
             Description = "Test Description"
         };
 
-        var result = await _creator.CreateToDo(dto);
+        var result = await _creator.CreateToDo(dto, UserId);
 
         var message = MessageBus.GetLastMessage<int>(Messages.ToDoCreated);
 
@@ -72,7 +75,7 @@ public class ToDoCreatorTests : BaseDbTest
             Description = "Test Description"
         };
 
-        var result = await _creator.CreateToDo(dto);
+        var result = await _creator.CreateToDo(dto, UserId);
 
         var toDo = await _lookupContext.ToDos.FindAsync(result);
 

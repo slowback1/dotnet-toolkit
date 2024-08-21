@@ -28,6 +28,13 @@ public class ToDoRetriever : BaseDatabaseAction
     {
         var toDos = await _context.ToDos.ToListAsync();
 
-        return toDos.Select(GetToDoFromEntity);
+        return toDos.Select(GetToDoFromEntity).ToList();
+    }
+
+    public async Task<IEnumerable<GetToDo>> GetToDosForUser(string userId)
+    {
+        var toDos = await _context.ToDos.Where(x => x.UserId == new Guid(userId)).ToListAsync();
+
+        return toDos.Select(GetToDoFromEntity).ToList();
     }
 }

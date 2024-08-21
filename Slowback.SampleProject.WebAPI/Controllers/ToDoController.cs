@@ -29,7 +29,7 @@ public class ToDoController : BaseController
     {
         var creator = new ToDoCreator(_context);
 
-        var todo = await creator.CreateToDo(createToDo);
+        var todo = await creator.CreateToDo(createToDo, Guid.NewGuid().ToString());
 
         var retriever = new ToDoRetriever(_context);
 

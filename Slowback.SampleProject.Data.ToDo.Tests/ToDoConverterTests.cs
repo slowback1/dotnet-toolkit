@@ -14,10 +14,14 @@ public class ToDoConvertersTests
             Description = "Test Description"
         };
 
-        var result = dto.ConvertToEntity();
+        var id = Guid.NewGuid();
+
+        var result = dto.ConvertToEntity(id.ToString());
+
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Description, Is.EqualTo("Test Description"));
+        Assert.That(result.UserId, Is.EqualTo(id));
     }
 
     [Test]
