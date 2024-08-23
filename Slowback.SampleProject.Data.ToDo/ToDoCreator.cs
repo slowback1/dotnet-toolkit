@@ -6,7 +6,7 @@ using Slowback.Time;
 
 namespace Slowback.SampleProject.Data.ToDo;
 
-public class ToDoCreator : BaseDatabaseAction
+public class ToDoCreator : BaseDatabaseAction, IToDoCreator
 {
     public ToDoCreator(SampleAppContext context) : base(context)
     {
@@ -25,4 +25,9 @@ public class ToDoCreator : BaseDatabaseAction
 
         return toDo.ToDoId;
     }
+}
+
+public interface IToDoCreator
+{
+    Task<int> CreateToDo(CreateToDo dto, string userId);
 }

@@ -7,7 +7,7 @@ using Slowback.Time;
 
 namespace Slowback.SampleProject.Data.ToDo;
 
-public class ToDoUpdater : BaseDatabaseAction
+public class ToDoUpdater : BaseDatabaseAction, IToDoUpdater
 {
     public ToDoUpdater(SampleAppContext context) : base(context)
     {
@@ -37,4 +37,9 @@ public class ToDoUpdater : BaseDatabaseAction
         if (toDo.IsComplete)
             toDo.CompletedAt = TimeEnvironment.Provider.Today();
     }
+}
+
+public interface IToDoUpdater
+{
+    Task<int> UpdateToDo(EditToDo dto);
 }

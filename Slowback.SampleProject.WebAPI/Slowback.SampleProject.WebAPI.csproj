@@ -23,6 +23,7 @@
         <ProjectReference Include="..\Slowback.SampleProject.Common\Slowback.SampleProject.Common.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.Core\Slowback.SampleProject.Data.Core.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.ToDo\Slowback.SampleProject.Data.ToDo.csproj"/>
+        <ProjectReference Include="..\Slowback.SampleProject.Data.UnitOfWork\Slowback.SampleProject.Data.UnitOfWork.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Data.User\Slowback.SampleProject.Data.User.csproj"/>
         <ProjectReference Include="..\Slowback.SampleProject.Logic.Authentication\Slowback.SampleProject.Logic.Authentication.csproj"/>
         <ProjectReference Include="..\Slowback.Validator\Slowback.Validator.csproj"/>

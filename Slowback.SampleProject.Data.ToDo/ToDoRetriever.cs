@@ -4,15 +4,10 @@ using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.Data.ToDo;
 
-public class ToDoRetriever : BaseDatabaseAction
+public class ToDoRetriever : BaseDatabaseAction, IToDoRetriever
 {
     public ToDoRetriever(SampleAppContext context) : base(context)
     {
-    }
-
-    private GetToDo GetToDoFromEntity(Core.Models.ToDo toDo)
-    {
-        return toDo.ConvertToDto();
     }
 
     public async Task<GetToDo> GetToDoById(int toDoId)
@@ -37,4 +32,16 @@ public class ToDoRetriever : BaseDatabaseAction
 
         return toDos.Select(GetToDoFromEntity).ToList();
     }
+
+    private GetToDo GetToDoFromEntity(Core.Models.ToDo toDo)
+    {
+        return toDo.ConvertToDto();
+    }
+}
+
+public interface IToDoRetriever
+{
+    Task<GetToDo> GetToDoById(int toDoId);
+    Task<IEnumerable<GetToDo>> GetToDos();
+    Task<IEnumerable<GetToDo>> GetToDosForUser(string userId);
 }

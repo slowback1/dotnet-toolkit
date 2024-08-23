@@ -4,6 +4,7 @@ using Slowback.Common;
 using Slowback.Data.Core.EF;
 using Slowback.Messaging;
 using Slowback.SampleProject.Data.Core;
+using Slowback.SampleProject.Data.UnitOfWork;
 using Slowback.SampleProject.Logic.Authentication;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;
@@ -11,21 +12,41 @@ namespace Slowback.SampleProject.WebAPI.Controllers;
 public class BaseController : Controller
 {
     protected readonly SampleAppContext _context;
+    protected readonly IUnitOfWork _unitOfWork;
 
-    public BaseController(IConfiguration config)
+    public BaseController()
     {
-        _context = LoadAppContext(config);
+        _context = LoadAppContext();
+        _unitOfWork = LoadUnitOfWork();
+    }
+
+    public BaseController(UnitOfWorkType type)
+    {
+        _context = LoadAppContext();
+        _unitOfWork = LoadUnitOfWork(type);
     }
 
     protected string? UserId { get; set; }
 
-    private SampleAppContext LoadAppContext(IConfiguration config)
+    private SampleAppContext LoadAppContext()
     {
         var databaseConfig = MessageBus.GetLastMessage<ConnectionOptions>(Messages.AppDbConnection);
 
         return new SampleAppContext(databaseConfig);
     }
 
+    private IUnitOfWork LoadUnitOfWork(UnitOfWorkType type = UnitOfWorkType.Real)
+    {
+        var databaseConfig = MessageBus.GetLastMessage<ConnectionOptions>(Messages.AppDbConnection);
+
+        var settings = new UnitOfWorkSettings
+        {
+            Type = type,
+            ConnectionOptions = databaseConfig
+        };
+
+        return UnitOfWorkFactory.GetUnitOfWork(settings);
+    }
 
     public override void OnActionExecuting(ActionExecutingContext context)
     {

@@ -66,6 +66,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Logi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Logic.Authentication.Tests", "Slowback.SampleProject.Logic.Authentication.Tests\Slowback.SampleProject.Logic.Authentication.Tests.csproj", "{F371FBC3-A5AB-425F-9EA4-5F2439EC7305}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data.UnitOfWork", "Slowback.SampleProject.Data.UnitOfWork\Slowback.SampleProject.Data.UnitOfWork.csproj", "{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowback.SampleProject.Data.UnitOfWork.Tests", "Slowback.SampleProject.Data.UnitOfWork.Tests\Slowback.SampleProject.Data.UnitOfWork.Tests.csproj", "{90E34A54-4882-4932-8089-48E26CD0DCA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -192,6 +196,14 @@ Global
 		{F371FBC3-A5AB-425F-9EA4-5F2439EC7305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F371FBC3-A5AB-425F-9EA4-5F2439EC7305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F371FBC3-A5AB-425F-9EA4-5F2439EC7305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E34A54-4882-4932-8089-48E26CD0DCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E34A54-4882-4932-8089-48E26CD0DCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E34A54-4882-4932-8089-48E26CD0DCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E34A54-4882-4932-8089-48E26CD0DCA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21FB07D0-A841-48B8-B6CC-71664F5E889F} = {91D9D0FE-EA3F-4617-91CE-B56AE3580A12}
@@ -222,5 +234,7 @@ Global
 		{8A92DF53-EAB2-4A4D-BF2F-DF2B627E5F01} = {DF1ECD43-9D25-44D3-8939-C53AA1513AA0}
 		{DBBF02CA-EB5C-49EE-94C6-556486F61B4A} = {8A92DF53-EAB2-4A4D-BF2F-DF2B627E5F01}
 		{F371FBC3-A5AB-425F-9EA4-5F2439EC7305} = {8A92DF53-EAB2-4A4D-BF2F-DF2B627E5F01}
+		{09671AE6-7D8C-48A1-8DD4-7CAFD59A2A97} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
+		{90E34A54-4882-4932-8089-48E26CD0DCA5} = {1BAEF345-DCFB-4D38-A27D-C5E98659AC93}
 	EndGlobalSection
 EndGlobal

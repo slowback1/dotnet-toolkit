@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Slowback.Common;
 using Slowback.SampleProject.Common.Dtos;
+using Slowback.SampleProject.Data.UnitOfWork;
 using Slowback.SampleProject.Data.User;
 using Slowback.SampleProject.Logic.Authentication;
 
@@ -9,7 +10,11 @@ namespace Slowback.SampleProject.WebAPI.Controllers;
 [Route("users")]
 public class UserController : BaseController
 {
-    public UserController(IConfiguration config) : base(config)
+    public UserController()
+    {
+    }
+
+    public UserController(UnitOfWorkType type) : base(type)
     {
     }
 

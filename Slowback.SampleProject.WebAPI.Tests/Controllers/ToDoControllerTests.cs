@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Slowback.SampleProject.Data.UnitOfWork;
 using Slowback.SampleProject.WebAPI.Controllers;
 using Slowback.TestUtilities;
 
@@ -11,5 +12,7 @@ public class ToDoControllerTests
     {
         typeof(ToDoController)
             .HasAttribute<RouteAttribute>();
+
+        var controller = new ToDoController(UnitOfWorkType.Mock);
     }
 }

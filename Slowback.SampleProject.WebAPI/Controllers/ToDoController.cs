@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Slowback.Common;
 using Slowback.SampleProject.Common.Dtos;
-using Slowback.SampleProject.Data.ToDo;
+using Slowback.SampleProject.Data.UnitOfWork;
 using Slowback.SampleProject.WebAPI.Attributes;
 
 namespace Slowback.SampleProject.WebAPI.Controllers;
@@ -10,7 +10,11 @@ namespace Slowback.SampleProject.WebAPI.Controllers;
 [Auth]
 public class ToDoController : BaseController
 {
-    public ToDoController(IConfiguration config) : base(config)
+    public ToDoController()
+    {
+    }
+
+    public ToDoController(UnitOfWorkType type) : base(type)
     {
     }
 
@@ -18,7 +22,7 @@ public class ToDoController : BaseController
     [Route("")]
     public async Task<ApiResponse<List<GetToDo>>> Get()
     {
-        var retriever = new ToDoRetriever(_context);
+        var retriever = _unitOfWork.ToDoRetriever;
 
         var todos = await retriever.GetToDosForUser(UserId!);
 
@@ -29,11 +33,11 @@ public class ToDoController : BaseController
     [Route("")]
     public async Task<ApiResponse<GetToDo>> Create([FromBody] CreateToDo createToDo)
     {
-        var creator = new ToDoCreator(_context);
+        var creator = _unitOfWork.ToDoCreator;
 
         var todo = await creator.CreateToDo(createToDo, UserId!);
 
-        var retriever = new ToDoRetriever(_context);
+        var retriever = _unitOfWork.ToDoRetriever;
 
         var createdToDo = await retriever.GetToDoById(todo);
 
@@ -44,13 +48,13 @@ public class ToDoController : BaseController
     [Route("{id}")]
     public async Task<ApiResponse<GetToDo>> Edit(int id, [FromBody] EditToDo editToDo)
     {
-        var editor = new ToDoUpdater(_context);
+        var editor = _unitOfWork.ToDoUpdater;
 
         editToDo.Id = id;
 
         var todo = await editor.UpdateToDo(editToDo);
 
-        var retriever = new ToDoRetriever(_context);
+        var retriever = _unitOfWork.ToDoRetriever;
 
         var editedToDo = await retriever.GetToDoById(todo);
 
@@ -61,7 +65,7 @@ public class ToDoController : BaseController
     [Route("{id}")]
     public async Task<ApiResponse<GetToDo>> Get(int id)
     {
-        var retriever = new ToDoRetriever(_context);
+        var retriever = _unitOfWork.ToDoRetriever;
 
         var todo = await retriever.GetToDoById(id);
 
