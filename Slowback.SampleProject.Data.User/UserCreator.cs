@@ -5,7 +5,12 @@ using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.Data.User;
 
-public class UserCreator : BaseDatabaseAction
+public interface IUserCreator
+{
+    Task<string> CreateUser(CreateUser dto);
+}
+
+public class UserCreator : BaseDatabaseAction, IUserCreator
 {
     public UserCreator(SampleAppContext context) : base(context)
     {

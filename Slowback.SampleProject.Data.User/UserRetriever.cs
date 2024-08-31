@@ -4,13 +4,18 @@ using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.Data.User;
 
-public class UserRetriever : BaseDatabaseAction
+public interface IUserRetriever
+{
+    Task<GetUser> GetUserById(string userId);
+}
+
+public class UserRetriever : BaseDatabaseAction, IUserRetriever
 {
     public UserRetriever(SampleAppContext context) : base(context)
     {
     }
 
-    public async Task<GetUser?> GetUserById(string userId)
+    public async Task<GetUser> GetUserById(string userId)
     {
         var user = await GetUserModelById(userId);
 

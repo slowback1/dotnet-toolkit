@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Slowback.SampleProject.Data.ToDo\Slowback.SampleProject.Data.ToDo.csproj"/>
+        <ProjectReference Include="..\Slowback.SampleProject.Data.User\Slowback.SampleProject.Data.User.csproj"/>
     </ItemGroup>
 
 </Project>

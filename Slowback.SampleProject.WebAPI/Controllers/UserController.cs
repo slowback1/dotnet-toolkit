@@ -22,7 +22,7 @@ public class UserController : BaseController
     [Route("create")]
     public async Task<ApiResponse<GetUser>> Create([FromBody] CreateUser createUser)
     {
-        var creator = new UserCreator(_context);
+        var creator = _unitOfWork.UserCreator;
 
         var user = await creator.CreateUser(createUser);
 
@@ -35,7 +35,7 @@ public class UserController : BaseController
     [Route("login")]
     public async Task<ApiResponse<string>> Login([FromBody] LoginDto loginUser)
     {
-        var stored = await new UserRetriever(_context).GetUserById(loginUser.Id);
+        var stored = await _unitOfWork.UserRetriever.GetUserById(loginUser.Id);
 
         if (stored is null) return NoContent<string>();
 

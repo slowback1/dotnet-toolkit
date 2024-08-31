@@ -6,7 +6,12 @@ using Slowback.SampleProject.Data.Core;
 
 namespace Slowback.SampleProject.Data.User;
 
-public class UserEditor : BaseDatabaseAction
+public interface IUserEditor
+{
+    Task UpdateUser(EditUser dto);
+}
+
+public class UserEditor : BaseDatabaseAction, IUserEditor
 {
     public UserEditor(SampleAppContext context) : base(context)
     {
